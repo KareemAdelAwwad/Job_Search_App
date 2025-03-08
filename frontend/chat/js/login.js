@@ -1,5 +1,5 @@
-// const baseURL = 'https://job-search.kareemadel.com';
-const baseURL = "http://localhost:3000";
+const baseURL = "https://job-search.kareemadel.com";
+// const baseURL = "http://localhost:3000";
 
 $("#login").click(() => {
     const email = $("#email").val();
