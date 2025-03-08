@@ -1,0 +1,1236 @@
+{
+	"info": {
+		"_postman_id": "13c47ebd-c280-456b-87b1-980491cb7b13",
+		"name": "Job Search App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39150290",
+		"_collection_link": "https://route-assignments.postman.co/workspace/Route-Assignments-%5BKareem-Adel%5D~c558179c-f438-4c79-85df-18d66d7d3b54/collection/39150290-13c47ebd-c280-456b-87b1-980491cb7b13?action=share&source=collection_link&creator=39150290"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Sign-up",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Kareem\",\r\n    \"lastName\": \"Adel\",\r\n    \"email\": \"kareemadel10110@gmail.com\",\r\n    \"mobileNumber\": \"01226135768\",\r\n    \"password\": \"password\",\r\n    \"gender\": \"Male\",                       // Male || Female\r\n    \"dateOfBirth\": \"05/29/2005\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/auth/signup",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify Email",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"kareemadel10110@gmail.com\",\r\n    \"OTP\": \"504054\" // If the OTP Expired we will sent a newer one!\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/auth/verify-email",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"verify-email"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign-in",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"kareemadel10110@gmail.com\",\r\n    \"password\": \"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/auth/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Forget Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"kareemadel10110@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/auth/forgot-password",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"forgot-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"kareemadel10110@gmail.com\",\r\n    \"OTP\": \"636813\",\r\n    \"password\": \"password\"         // The api should take the password one time, and the password confimation been handeld from the front-end side.\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/auth/reset-password",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"reset-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh Token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "refreshtoken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2M1M2U1NDEzYjkwNzE5Mjk5NjFlMTEiLCJlbWFpbCI6ImthcmVlbWFkZWwxMDExMEBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJ0b2tlbklkIjoiOGI5ZGYzZjQtODA1Zi00YmM2LWJhMjktNmE1MzkxZjQzNGViIiwiaWF0IjoxNzQxMjkyMTY2LCJleHAiOjE3NDE4OTY5NjZ9.aFhr_kZQus6KXDHvGIkSgHT1nrcpN4FteGVvLfjKiX8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/auth/refresh-token",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"refresh-token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accesstoken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2M1M2U1NDEzYjkwNzE5Mjk5NjFlMTEiLCJlbWFpbCI6ImthcmVlbWFkZWwxMDExMEBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJ0b2tlbklkIjoiYTAyNzE5NjktMDY3Yy00NGY0LTkzOTMtY2Y3NGIzOTdmN2QzIiwiaWF0IjoxNzQxMjkyMTcyLCJleHAiOjE3NDEyOTU3NzJ9.T-61FtvVp6IKpSx1PUh6R8plm-rSwJPVfm9wZe018ag",
+								"type": "text"
+							},
+							{
+								"key": "refreshtoken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2M1M2U1NDEzYjkwNzE5Mjk5NjFlMTEiLCJlbWFpbCI6ImthcmVlbWFkZWwxMDExMEBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJ0b2tlbklkIjoiOGI5ZGYzZjQtODA1Zi00YmM2LWJhMjktNmE1MzkxZjQzNGViIiwiaWF0IjoxNzQxMjkyMTY2LCJleHAiOjE3NDE4OTY5NjZ9.aFhr_kZQus6KXDHvGIkSgHT1nrcpN4FteGVvLfjKiX8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/auth/logout",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Profile",
+			"item": [
+				{
+					"name": "Update Details",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accesstoken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2M1M2U1NDEzYjkwNzE5Mjk5NjFlMTEiLCJlbWFpbCI6ImthcmVlbWFkZWwxMDExMEBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJ0b2tlbklkIjoiMzAyNTU0OGMtMmRlZC00OWM0LWI2NmQtZDdmYWU2NWE2YzlhIiwiaWF0IjoxNzQxMjkyMjI4LCJleHAiOjE3NDEyOTU4Mjh9.GYfLDX2uC-nB5PQBN6KMXYIkT1AQpZYSpUUDxWyKvyE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"firstName\": \"Rover\"\r\n    // \"lastName\" : \"New Name\",\r\n    // \"gender\": \"Male\",\r\n    // \"mobileNumber\": \"0111111111\",\r\n    // \"dateOfBirth\": \"1/1/2000\",\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user/update",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Account",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accesstoken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2M1M2U1NDEzYjkwNzE5Mjk5NjFlMTEiLCJlbWFpbCI6ImthcmVlbWFkZWwxMDExMEBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJ0b2tlbklkIjoiMzAyNTU0OGMtMmRlZC00OWM0LWI2NmQtZDdmYWU2NWE2YzlhIiwiaWF0IjoxNzQxMjkyMjI4LCJleHAiOjE3NDEyOTU4Mjh9.GYfLDX2uC-nB5PQBN6KMXYIkT1AQpZYSpUUDxWyKvyE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user/account",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Another User Profile",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accesstoken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2M1M2U1NDEzYjkwNzE5Mjk5NjFlMTEiLCJlbWFpbCI6ImthcmVlbWFkZWwxMDExMEBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJ0b2tlbklkIjoiMzAyNTU0OGMtMmRlZC00OWM0LWI2NmQtZDdmYWU2NWE2YzlhIiwiaWF0IjoxNzQxMjkyMjI4LCJleHAiOjE3NDEyOTU4Mjh9.GYfLDX2uC-nB5PQBN6KMXYIkT1AQpZYSpUUDxWyKvyE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user/view-profile/67c723444e4cd5387db9a237",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"view-profile",
+								"67c723444e4cd5387db9a237"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Password",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "accesstoken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2M1M2U1NDEzYjkwNzE5Mjk5NjFlMTEiLCJlbWFpbCI6ImthcmVlbWFkZWwxMDExMEBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJ0b2tlbklkIjoiMzAyNTU0OGMtMmRlZC00OWM0LWI2NmQtZDdmYWU2NWE2YzlhIiwiaWF0IjoxNzQxMjkyMjI4LCJleHAiOjE3NDEyOTU4Mjh9.GYfLDX2uC-nB5PQBN6KMXYIkT1AQpZYSpUUDxWyKvyE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"oldPassword\": \"password\",\r\n    \"newPassword\": \"123123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user/change-password",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"change-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload Profile Pic",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accesstoken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2M1M2U1NDEzYjkwNzE5Mjk5NjFlMTEiLCJlbWFpbCI6ImthcmVlbWFkZWwxMDExMEBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJ0b2tlbklkIjoiNDgwNTRhMGEtZTYwYi00M2FkLTg1YWQtZjI4NGMwNzk5N2M2IiwiaWF0IjoxNzQxMjkzNTQwLCJleHAiOjE3NDEyOTcxNDB9.BpRIjApPNWlZR9eJSKKVTLIp3mYCfYq64YlJ8xdovSc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "profilePic",
+									"type": "file",
+									"src": "/C:/Users/Kareem/Downloads/[pixiv] Discovery/127253258_p5.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/user/upload-profile-pic",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"upload-profile-pic"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload Cover Pic",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accesstoken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2M1M2U1NDEzYjkwNzE5Mjk5NjFlMTEiLCJlbWFpbCI6ImthcmVlbWFkZWwxMDExMEBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJ0b2tlbklkIjoiNDgwNTRhMGEtZTYwYi00M2FkLTg1YWQtZjI4NGMwNzk5N2M2IiwiaWF0IjoxNzQxMjkzNTQwLCJleHAiOjE3NDEyOTcxNDB9.BpRIjApPNWlZR9eJSKKVTLIp3mYCfYq64YlJ8xdovSc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "coverPic",
+									"type": "file",
+									"src": "/C:/Users/Kareem/Downloads/1363478.jpeg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/user/upload-cover-pic",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"upload-cover-pic"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Profile Pic",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "accesstoken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2M1M2U1NDEzYjkwNzE5Mjk5NjFlMTEiLCJlbWFpbCI6ImthcmVlbWFkZWwxMDExMEBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJ0b2tlbklkIjoiNDgwNTRhMGEtZTYwYi00M2FkLTg1YWQtZjI4NGMwNzk5N2M2IiwiaWF0IjoxNzQxMjkzNTQwLCJleHAiOjE3NDEyOTcxNDB9.BpRIjApPNWlZR9eJSKKVTLIp3mYCfYq64YlJ8xdovSc",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/user/delete-profile-pic",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"delete-profile-pic"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Cover Pic",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "accesstoken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2M1M2U1NDEzYjkwNzE5Mjk5NjFlMTEiLCJlbWFpbCI6ImthcmVlbWFkZWwxMDExMEBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJ0b2tlbklkIjoiNDgwNTRhMGEtZTYwYi00M2FkLTg1YWQtZjI4NGMwNzk5N2M2IiwiaWF0IjoxNzQxMjkzNTQwLCJleHAiOjE3NDEyOTcxNDB9.BpRIjApPNWlZR9eJSKKVTLIp3mYCfYq64YlJ8xdovSc",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/user/delete-cover-pic",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"delete-cover-pic"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Account",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "accesstoken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2M1M2U1NDEzYjkwNzE5Mjk5NjFlMTEiLCJlbWFpbCI6ImthcmVlbWFkZWwxMDExMEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsInRva2VuSWQiOiIxNTQ0ODY1Ny04YWI0LTQwYWItYjY1Yy1mMWQ4NzkyZDRkMzUiLCJpYXQiOjE3NDEwMzUwOTcsImV4cCI6MTc0MTAzODY5N30.yW424VzarW4cjPjIu0csjlLwvTKiV2Eqtw3u-WGgHQY",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/user/delete-account",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"delete-account"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Company",
+			"item": [
+				{
+					"name": "Add Company",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accesstoken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2M1M2U1NDEzYjkwNzE5Mjk5NjFlMTEiLCJlbWFpbCI6ImthcmVlbWFkZWwxMDExMEBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJ0b2tlbklkIjoiNDgwNTRhMGEtZTYwYi00M2FkLTg1YWQtZjI4NGMwNzk5N2M2IiwiaWF0IjoxNzQxMjkzNTQwLCJleHAiOjE3NDEyOTcxNDB9.BpRIjApPNWlZR9eJSKKVTLIp3mYCfYq64YlJ8xdovSc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "logo",
+									"type": "file",
+									"src": "/C:/Users/Kareem/Downloads/brave_screenshot_my.te.eg.png"
+								},
+								{
+									"key": "cover",
+									"type": "file",
+									"src": "/C:/Users/Kareem/Downloads/Untitled-2025-03-06-1659.png"
+								},
+								{
+									"key": "legalAttachment",
+									"type": "file",
+									"src": "/C:/Users/Kareem/Downloads/ب.pdf"
+								},
+								{
+									"key": "name",
+									"value": "name",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "description",
+									"type": "text"
+								},
+								{
+									"key": "industry",
+									"value": "industry",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "address",
+									"type": "text"
+								},
+								{
+									"key": "numberOfEmployees",
+									"value": "1-10",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "info@email.com",
+									"type": "text"
+								},
+								{
+									"key": "HRs",
+									"value": "67c53e5413b9071929961e11",
+									"type": "text"
+								},
+								{
+									"key": "HRs",
+									"value": "67c54dd78b039656616263dd",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/company/add",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"company",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Company",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accesstoken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2M1M2U1NDEzYjkwNzE5Mjk5NjFlMTEiLCJlbWFpbCI6ImthcmVlbWFkZWwxMDExMEBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJ0b2tlbklkIjoiNDgwNTRhMGEtZTYwYi00M2FkLTg1YWQtZjI4NGMwNzk5N2M2IiwiaWF0IjoxNzQxMjkzNTQwLCJleHAiOjE3NDEyOTcxNDB9.BpRIjApPNWlZR9eJSKKVTLIp3mYCfYq64YlJ8xdovSc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "logo",
+									"type": "file",
+									"src": "/C:/Users/Kareem/Downloads/[pixiv] Discovery/127253258_p6.jpg",
+									"disabled": true
+								},
+								{
+									"key": "cover",
+									"type": "file",
+									"src": "/C:/Users/Kareem/Downloads/[pixiv] Discovery/127253258_p6.jpg",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "updated name",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "description",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "industry",
+									"value": "industry 2",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "address",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "numberOfEmployees",
+									"value": "1-10",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "info@email.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "HRs",
+									"value": "67c723444e4cd5387db9a237",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/company/update/:companyId",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"company",
+								"update",
+								":companyId"
+							],
+							"variable": [
+								{
+									"key": "companyId",
+									"value": "67ca0a13791d7e0fca984c7d"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Company",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "accesstoken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2M1M2U1NDEzYjkwNzE5Mjk5NjFlMTEiLCJlbWFpbCI6ImthcmVlbWFkZWwxMDExMEBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJ0b2tlbklkIjoiMWE0YzI2MGUtN2I4OC00OTcxLWFhZWMtNjBiOTE0ODIyOTI1IiwiaWF0IjoxNzQxMTMzMDEwLCJleHAiOjE3NDExMzY2MTB9.IALOKB8ZD8_6ZJ--388fH3Ic_qV9ch74pVg28o5hg-Q",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/company/delete/:companyId",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"company",
+								"delete",
+								":companyId"
+							],
+							"variable": [
+								{
+									"key": "companyId",
+									"value": "67c76b5c52e4c33bbafb15e7"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Company By Name",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accesstoken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2M1M2U1NDEzYjkwNzE5Mjk5NjFlMTEiLCJlbWFpbCI6ImthcmVlbWFkZWwxMDExMEBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJ0b2tlbklkIjoiNDgwNTRhMGEtZTYwYi00M2FkLTg1YWQtZjI4NGMwNzk5N2M2IiwiaWF0IjoxNzQxMjkzNTQwLCJleHAiOjE3NDEyOTcxNDB9.BpRIjApPNWlZR9eJSKKVTLIp3mYCfYq64YlJ8xdovSc",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/company/:companyName",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"company",
+								":companyName"
+							],
+							"variable": [
+								{
+									"key": "companyName",
+									"value": "updated name 2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Company With Jobs",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accesstoken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2M1M2U1NDEzYjkwNzE5Mjk5NjFlMTEiLCJlbWFpbCI6ImthcmVlbWFkZWwxMDExMEBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJ0b2tlbklkIjoiNDgwNTRhMGEtZTYwYi00M2FkLTg1YWQtZjI4NGMwNzk5N2M2IiwiaWF0IjoxNzQxMjkzNTQwLCJleHAiOjE3NDEyOTcxNDB9.BpRIjApPNWlZR9eJSKKVTLIp3mYCfYq64YlJ8xdovSc",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/company/jobs/:companyId",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"company",
+								"jobs",
+								":companyId"
+							],
+							"variable": [
+								{
+									"key": "companyId",
+									"value": "67c76b5c52e4c33bbafb15e7"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload Company Logo",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accesstoken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2M1M2U1NDEzYjkwNzE5Mjk5NjFlMTEiLCJlbWFpbCI6ImthcmVlbWFkZWwxMDExMEBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJ0b2tlbklkIjoiMDA1ZjIyYjMtOWQ4MS00YzY5LWE3NjUtYjYyOGM3OWY4NzJkIiwiaWF0IjoxNzQxMTMxNjA5LCJleHAiOjE3NDExMzUyMDl9.s2iO9eXf1NH6cv03mOvCMc2zVCzBwJJu0cT-jq0UN64",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "logo",
+									"type": "file",
+									"src": "/C:/Users/Kareem/Downloads/rover_male_rover_and_jiyan_wuthering_waves_drawn_by_secretfj520__660619220a9c2a87dd1e4b42c20d0baf.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/company/upload-logo/:companyId",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"company",
+								"upload-logo",
+								":companyId"
+							],
+							"variable": [
+								{
+									"key": "companyId",
+									"value": "67c76b5c52e4c33bbafb15e7"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload Company Cover",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accesstoken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2M1M2U1NDEzYjkwNzE5Mjk5NjFlMTEiLCJlbWFpbCI6ImthcmVlbWFkZWwxMDExMEBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJ0b2tlbklkIjoiMDA1ZjIyYjMtOWQ4MS00YzY5LWE3NjUtYjYyOGM3OWY4NzJkIiwiaWF0IjoxNzQxMTMxNjA5LCJleHAiOjE3NDExMzUyMDl9.s2iO9eXf1NH6cv03mOvCMc2zVCzBwJJu0cT-jq0UN64",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "cover",
+									"type": "file",
+									"src": "/C:/Users/Kareem/Downloads/robot-image.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/company/upload-cover/:companyId",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"company",
+								"upload-cover",
+								":companyId"
+							],
+							"variable": [
+								{
+									"key": "companyId",
+									"value": "67c76b5c52e4c33bbafb15e7"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Company Logo",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "accesstoken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2M1M2U1NDEzYjkwNzE5Mjk5NjFlMTEiLCJlbWFpbCI6ImthcmVlbWFkZWwxMDExMEBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJ0b2tlbklkIjoiNDgwNTRhMGEtZTYwYi00M2FkLTg1YWQtZjI4NGMwNzk5N2M2IiwiaWF0IjoxNzQxMjkzNTQwLCJleHAiOjE3NDEyOTcxNDB9.BpRIjApPNWlZR9eJSKKVTLIp3mYCfYq64YlJ8xdovSc",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/company/delete-logo/:companyId",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"company",
+								"delete-logo",
+								":companyId"
+							],
+							"variable": [
+								{
+									"key": "companyId",
+									"value": "67c76b5c52e4c33bbafb15e7"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Company Cover",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "accesstoken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2M1M2U1NDEzYjkwNzE5Mjk5NjFlMTEiLCJlbWFpbCI6ImthcmVlbWFkZWwxMDExMEBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJ0b2tlbklkIjoiNDgwNTRhMGEtZTYwYi00M2FkLTg1YWQtZjI4NGMwNzk5N2M2IiwiaWF0IjoxNzQxMjkzNTQwLCJleHAiOjE3NDEyOTcxNDB9.BpRIjApPNWlZR9eJSKKVTLIp3mYCfYq64YlJ8xdovSc",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/company/delete-cover/:companyId",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"company",
+								"delete-cover",
+								":companyId"
+							],
+							"variable": [
+								{
+									"key": "companyId",
+									"value": "67c76b5c52e4c33bbafb15e7"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Export Applications",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/company/applications/:companyId",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"company",
+								"applications",
+								":companyId"
+							],
+							"variable": [
+								{
+									"key": "companyId",
+									"value": "67cafc5f30cdac75b23cc85d",
+									"description": "Use Browser"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Job",
+			"item": [
+				{
+					"name": "Add Job",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accesstoken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2M1M2U1NDEzYjkwNzE5Mjk5NjFlMTEiLCJlbWFpbCI6ImthcmVlbWFkZWwxMDExMEBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJ0b2tlbklkIjoiNDgwNTRhMGEtZTYwYi00M2FkLTg1YWQtZjI4NGMwNzk5N2M2IiwiaWF0IjoxNzQxMjkzNTQwLCJleHAiOjE3NDEyOTcxNDB9.BpRIjApPNWlZR9eJSKKVTLIp3mYCfYq64YlJ8xdovSc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Back-end\",\r\n  \"description\": \"description\",\r\n  \"type\": \"Full-time\",\r\n  \"seniorityLevel\": \"Junior\",\r\n  \"technicalSkills\": [\"Node.js\", \"TypeScript\", \"GraphQL\"],\r\n  \"softSkills\": [\"Team Work\"],\r\n  \"location\": \"Cairo, Egypt\",\r\n  \"companyId\": \"67c76b5c52e4c33bbafb15e7\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/job/add",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"job",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Job",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accesstoken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2M1M2U1NDEzYjkwNzE5Mjk5NjFlMTEiLCJlbWFpbCI6ImthcmVlbWFkZWwxMDExMEBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJ0b2tlbklkIjoiZDIyMDAzY2UtMTY2Ni00N2I1LWI5ZjAtNmNiNWE3NTBiNzdiIiwiaWF0IjoxNzQxMjk1NTg5LCJleHAiOjE3NDEyOTkxODl9.iR-KueyaxgXMPzzehIyz1XAtGhZsxTqVcwLerwg3IqI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"New Job Title\"\r\n//   \"description\": \"description\",\r\n//   \"type\": \"Full-time\",\r\n//   \"seniorityLevel\": \"Junior\",\r\n//   \"technicalSkills\": [\"Node.js\", \"TypeScript\", \"GraphQL\"],\r\n//   \"softSkills\": [\"Team Work\"],\r\n//   \"location\": \"Cairo, Egypt\"\r\n}\r\n\r\n\r\n// All the data above can be updated, just uncomment theme.",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/job/update/:jobId",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"job",
+								"update",
+								":jobId"
+							],
+							"variable": [
+								{
+									"key": "jobId",
+									"value": "67c7aa045077890ed16c7ee2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Job",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "accesstoken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2M1M2U1NDEzYjkwNzE5Mjk5NjFlMTEiLCJlbWFpbCI6ImthcmVlbWFkZWwxMDExMEBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJ0b2tlbklkIjoiYWU1ZTMxNzgtZDcxMC00MWY2LWJhZDYtNmFjYThkYjU4NDE2IiwiaWF0IjoxNzQxMTQwNjQ2LCJleHAiOjE3NDExNDQyNDZ9.YbUPb2sNxEpx2-uSJRdYaSydVmnh9RFkuivtVkqg0FY",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/job/delete/:jobId",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"job",
+								"delete",
+								":jobId"
+							],
+							"variable": [
+								{
+									"key": "jobId",
+									"value": "67c7ab86f5496d0ee666455a"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Company Jobs",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accesstoken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2M1M2U1NDEzYjkwNzE5Mjk5NjFlMTEiLCJlbWFpbCI6ImthcmVlbWFkZWwxMDExMEBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJ0b2tlbklkIjoiNDgwNTRhMGEtZTYwYi00M2FkLTg1YWQtZjI4NGMwNzk5N2M2IiwiaWF0IjoxNzQxMjkzNTQwLCJleHAiOjE3NDEyOTcxNDB9.BpRIjApPNWlZR9eJSKKVTLIp3mYCfYq64YlJ8xdovSc",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/company/:companyName/jobs",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"company",
+								":companyName",
+								"jobs"
+							],
+							"variable": [
+								{
+									"key": "companyName",
+									"value": "updated name 2",
+									"description": "Should be exactly the same name that stored in the DB."
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filter Jobs",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accesstoken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2M1M2U1NDEzYjkwNzE5Mjk5NjFlMTEiLCJlbWFpbCI6ImthcmVlbWFkZWwxMDExMEBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJ0b2tlbklkIjoiZDIyMDAzY2UtMTY2Ni00N2I1LWI5ZjAtNmNiNWE3NTBiNzdiIiwiaWF0IjoxNzQxMjk1NTg5LCJleHAiOjE3NDEyOTkxODl9.iR-KueyaxgXMPzzehIyz1XAtGhZsxTqVcwLerwg3IqI",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/job/filter/?title=Back&location=Cairo&technicalSkills=GraphQL, Node.js&offset=1&limit=10",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"job",
+								"filter",
+								""
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "Back"
+								},
+								{
+									"key": "seniorityLevel",
+									"value": "CTO",
+									"disabled": true
+								},
+								{
+									"key": "location",
+									"value": "Cairo"
+								},
+								{
+									"key": "workingTime",
+									"value": "Full-time",
+									"disabled": true
+								},
+								{
+									"key": "technicalSkills",
+									"value": "GraphQL, Node.js",
+									"description": "It's case senstive! Beacuse it's a valuse that the front-end who will return based on the user choice.\n"
+								},
+								{
+									"key": "offset",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Job Applications",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accesstoken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2M1M2U1NDEzYjkwNzE5Mjk5NjFlMTEiLCJlbWFpbCI6ImthcmVlbWFkZWwxMDExMEBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJ0b2tlbklkIjoiNDgwNTRhMGEtZTYwYi00M2FkLTg1YWQtZjI4NGMwNzk5N2M2IiwiaWF0IjoxNzQxMjkzNTQwLCJleHAiOjE3NDEyOTcxNDB9.BpRIjApPNWlZR9eJSKKVTLIp3mYCfYq64YlJ8xdovSc",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/job/applications/:jobId",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"job",
+								"applications",
+								":jobId"
+							],
+							"variable": [
+								{
+									"key": "jobId",
+									"value": "67c7ab86f5496d0ee666455a"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Apply to Job",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accesstoken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2M1M2U1NDEzYjkwNzE5Mjk5NjFlMTEiLCJlbWFpbCI6ImthcmVlbWFkZWwxMDExMEBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJ0b2tlbklkIjoiNDgwNTRhMGEtZTYwYi00M2FkLTg1YWQtZjI4NGMwNzk5N2M2IiwiaWF0IjoxNzQxMjkzNTQwLCJleHAiOjE3NDEyOTcxNDB9.BpRIjApPNWlZR9eJSKKVTLIp3mYCfYq64YlJ8xdovSc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "CV",
+									"type": "file",
+									"src": "/C:/Users/Kareem/Downloads/Add a heading.pdf"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/job/apply/:jobId",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"job",
+								"apply",
+								":jobId"
+							],
+							"variable": [
+								{
+									"key": "jobId",
+									"value": "67c7aa045077890ed16c7ee2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Application Status",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accesstoken",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2M1M2U1NDEzYjkwNzE5Mjk5NjFlMTEiLCJlbWFpbCI6ImthcmVlbWFkZWwxMDExMEBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJ0b2tlbklkIjoiZDIyMDAzY2UtMTY2Ni00N2I1LWI5ZjAtNmNiNWE3NTBiNzdiIiwiaWF0IjoxNzQxMjk1NTg5LCJleHAiOjE3NDEyOTkxODl9.iR-KueyaxgXMPzzehIyz1XAtGhZsxTqVcwLerwg3IqI",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/job/update-application/:applicationId?status=Rejected",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"job",
+								"update-application",
+								":applicationId"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "Rejected",
+									"description": "Accepted or Rejected"
+								}
+							],
+							"variable": [
+								{
+									"key": "applicationId",
+									"value": "67c9ab5da5e2f11ce68101dc"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./css/index.css" />
+    <title>Chat App</title>
+  </head>
+
+  <body class="bg-[#1a202c] text-[#ffffff] min-h-screen">
+    <div class="max-w-7xl mx-auto p-4">
+      <div
+        id="toast"
+        class="w-64 bg-[#0a66c2] text-white text-center p-2 rounded-lg shadow-lg fixed top-4 left-1/2 transform -translate-x-1/2 hidden"
+      ></div>
+      <h1 id="userName" class="text-2xl font-bold text-[#0a66c2] p-3"></h1>
+
+      <div class="container mx-auto my-6 p-4">
+        <h1 class="text-[#0a66c2] text-5xl font-bold text-center mb-12">
+          Job Search - Chat
+          <span class="text-[#a0aec0] text-2xl font-normal">2.1</span>
+        </h1>
+        <div class="flex flex-col md:flex-row gap-6">
+          <div class="md:w-2/3 w-full">
+            <div
+              class="chatContainer border border-[#0a66c2] rounded-lg overflow-hidden bg-[#2d3748] shadow-lg"
+            >
+              <div
+                id="messageList"
+                class="messageList p-4 h-96 overflow-y-auto"
+              >
+                <!-- Messages will appear here -->
+              </div>
+              <div
+                class="messageForm p-4 border-t border-[#0a66c2] bg-[#2d3748]"
+              >
+                <div class="flex gap-2">
+                  <input
+                    id="messageBody"
+                    class="bg-transparent border-b border-[#a0aec0] text-[#ffffff] w-full px-3 py-2 focus:outline-none focus:border-[#0a66c2] transition-colors"
+                    type="text"
+                    placeholder="Type your message..."
+                  />
+                  <button
+                    id="sendMessage"
+                    class="bg-[#0a66c2] hover:bg-[#004182] text-white font-medium px-4 py-2 rounded-md transition-colors"
+                  >
+                    Send
+                  </button>
+                  <button
+                    id="leaveRoom"
+                    class="bg-[#666666] hover:bg-[#333333] text-white font-medium px-4 py-2 rounded-md transition-colors opacity-50 cursor-not-allowed"
+                  >
+                    Leave
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="md:w-1/3 w-full space-y-6">
+            <div
+              class="friends border border-[#0a66c2] rounded-lg p-4 bg-[#2d3748] shadow-lg"
+            >
+              <h3 class="text-xl font-bold mb-4 text-[#0a66c2]">Connections</h3>
+              <div id="friends" class="max-h-60 overflow-y-auto"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+    <script src="./js/index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,95 @@
+/* Additional custom styles beyond Tailwind */
+.chatImage {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.me {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.me span {
+  background-color: #0a66c2; /* LinkedIn blue */
+  border-radius: 18px 18px 0 18px;
+  padding: 0.5rem 1rem;
+  max-width: 80%;
+  margin-right: 0.75rem;
+  word-break: break-word;
+  color: white;
+}
+
+.myFriend {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.myFriend span {
+  background-color: #2d3a4b; /* Dark gray for messages */
+  border-radius: 18px 18px 18px 0;
+  padding: 0.5rem 1rem;
+  max-width: 80%;
+  margin-left: 0.75rem;
+  word-break: break-word;
+  color: #ffffff; /* White text for better contrast */
+}
+
+.noResult {
+  background-color: #2d3a4b; /* Dark gray */
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  color: #a0aec0; /* Light gray for text */
+  margin: 2rem auto;
+  width: 80%;
+}
+
+.chatUser {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: all 0.2s;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  color: #ffffff; /* White text for better contrast */
+}
+
+.chatUser:hover {
+  background-color: #2d3a4b; /* Dark gray for hover */
+}
+
+/* Ensure the message list scrolls properly */
+#messageList {
+  overflow-y: auto;
+  height: 100%;
+  padding: 1rem;
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar for message list */
+#messageList::-webkit-scrollbar {
+  width: 6px;
+}
+
+#messageList::-webkit-scrollbar-track {
+  background: #1a202c; /* Dark background for scrollbar track */
+}
+
+#messageList::-webkit-scrollbar-thumb {
+  background: #0a66c2; /* LinkedIn blue for scrollbar thumb */
+  border-radius: 3px;
+}
+
+#messageList::-webkit-scrollbar-thumb:hover {
+  background: #004182; /* Darker LinkedIn blue for hover */
+}
+
+/* Make input look better on focus */
+input:focus {
+  outline: none;
+  border-color: #0a66c2 !important; /* LinkedIn blue */
+}
